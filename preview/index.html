@@ -1,0 +1,109 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Shanghai Relocation Assistant</title>
+  <script>/*__DEMO_MODE__*/</script>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="phone">
+    <section id="chat-view" class="view chat-view">
+      <div class="calendar-hero"><span>Shanghai Relocation</span></div>
+      <div id="demo-notice" class="demo-notice" hidden><span>Portfolio demo · fictional data only · requests are not saved by this demo server.</span><button id="reset-demo" type="button">Reset demo</button></div>
+      <main id="chat" class="chat-scroll" aria-live="polite">
+        <div class="eyebrow">YOUR SHANGHAI MOVE, MADE CLEARER</div>
+        <h1 class="chat-title">A smoother move starts with a clear plan.</h1>
+        <p class="chat-subtitle">We’ll map out work, housing, and move-in steps around your dates—one decision at a time.</p>
+        <section id="demo-prompts" class="demo-prompts" hidden aria-label="Demo examples">
+          <div class="demo-prompts-title">Try a sample scenario</div>
+          <button type="button" data-demo-prompt="Compare areas near Zhangjiang; commute within 40 minutes; monthly rent budget CNY 4,000; I am okay with shared housing.">Compare sample areas</button>
+          <button type="button" data-demo-prompt="Create a relocation plan from my saved profile.">Create a plan proposal</button>
+          <button type="button" data-demo-prompt="What should I confirm with HR before my first day?">Ask about an upcoming task</button>
+        </section>
+        <section id="onboarding-card" class="onboarding-card" aria-label="First-time setup guide" hidden></section>
+        <div id="intro-row" class="row assistant"><div id="intro-bubble" class="bubble">Start with your work location, first day, and target move-in date. We can add rent, commute, and housing preferences when you’re ready to compare areas.</div></div>
+        <button id="in-app-reminders" class="in-app-reminders" type="button" hidden></button>
+        <div id="proposal-wrap" class="proposal-wrap" hidden></div>
+      </main>
+      <form id="chat-form" class="composer">
+        <textarea id="chat-input" placeholder="Try: “Compare areas near Zhangjiang” or “Move my viewing to Friday”" maxlength="4000" rows="2" aria-label="Enter a message"></textarea>
+        <button id="send" class="primary send" type="submit">Send</button>
+      </form>
+      <div class="footnote">Saved on this device · relevant context is sent to the configured AI when you ask a question.</div>
+    </section>
+
+    <section id="calendar-view" class="view calendar-view" hidden>
+      <div class="calendar-hero"><span>Plan Calendar</span><button id="add-custom-event" class="hero-more" type="button" aria-label="Add a custom event">•••</button></div>
+      <div class="calendar-body">
+        <div class="month-bar">
+          <h1 id="month-title"></h1>
+          <div class="month-actions"><button id="prev-month" type="button" aria-label="Previous month">‹</button><button id="next-month" type="button" aria-label="Next month">›</button></div>
+        </div>
+        <div class="month-card">
+          <div class="weekdays"><span>Mon</span><span>Tue</span><span>Wed</span><span>Thu</span><span>Fri</span><span>Sat</span><span>Sun</span></div>
+          <div id="month-grid" class="month-grid"></div>
+        </div>
+        <div class="day-heading"><h2 id="day-title"></h2><span id="day-count" class="count-pill"></span></div>
+        <div id="day-events" class="event-list"></div>
+        <div id="undated-section" class="undated-section" hidden><div class="day-heading"><h2>Date to be confirmed</h2><span id="undated-count" class="count-pill"></span></div><div id="undated-events" class="event-list"></div></div>
+      </div>
+      <div id="custom-modal" class="modal-backdrop" hidden>
+        <div class="modal-card" role="dialog" aria-modal="true" aria-labelledby="custom-modal-title">
+          <form id="custom-event-form">
+            <h2 id="custom-modal-title">Add a custom event</h2>
+            <p class="modal-subtitle">Schedule an item for the selected date.</p>
+            <label class="modal-field">Start date<input id="custom-start" type="date" required></label>
+            <label class="modal-field">End date<input id="custom-end" type="date" required></label>
+            <label class="modal-field">Event description<textarea id="custom-description" rows="3" maxlength="300" placeholder="For example: complete the move and check utility meter readings" required></textarea></label>
+            <label class="hard-option"><input id="custom-hard" type="checkbox"><span>Hard deadline</span><small>Mark the end date with a red dot</small></label>
+            <div id="custom-error" class="modal-error" role="alert"></div>
+            <div class="modal-actions"><button id="cancel-custom" type="button">Cancel</button><button class="primary" type="submit">Save event</button></div>
+          </form>
+        </div>
+      </div>
+    </section>
+
+    <section id="profile-view" class="view profile-view" hidden>
+      <div class="calendar-hero profile-hero"><span>Profile</span><button id="profile-menu-button" class="hero-more" type="button" aria-label="More options" aria-expanded="false">•••</button><div id="profile-menu" class="profile-menu" hidden><button id="open-history" class="profile-menu-option" type="button">Past inputs <span id="history-count"></span><span aria-hidden="true">›</span></button><div id="history-panel" hidden><button id="back-history" class="history-back" type="button">‹ Back</button><div class="profile-menu-title">Past inputs</div><div id="history-list" class="history-list"></div></div></div></div>
+      <div class="profile-body">
+        <div class="profile-intro">Your saved details help keep future plans consistent. Edit or remove them anytime.</div>
+        <div class="profile-count" id="profile-count"></div>
+        <button id="open-reminders" class="reminder-entry" type="button"><span><strong>Reminder settings</strong><small>Set in-app reminders and timing</small></span><b aria-hidden="true">›</b></button>
+        <form id="profile-form">
+          <div id="profile-fields"></div>
+          <button class="primary profile-save" type="submit">Save profile</button>
+        </form>
+        <div id="profile-status" class="profile-status" role="status"></div>
+        <button id="clear-user-data" class="clear-data" type="button">Clear my profile and chat history</button>
+        <p class="privacy-note">Your profile and past inputs stay in this browser. Relevant profile data and recent messages are sent to the configured model for Q&A; do not enter ID numbers, bank-card numbers, or other sensitive information. Clearing site data also removes these records.</p>
+      </div>
+      <section id="reminder-settings" class="reminder-settings" hidden aria-label="Reminder settings">
+        <div class="reminder-header"><button id="back-reminders" type="button" aria-label="Back">‹</button><h1>Reminder settings</h1><span></span></div>
+        <div class="reminder-content">
+          <div class="reminder-card">
+            <label class="reminder-toggle"><span><strong>In-app reminders</strong><small>Shown inside the mini program</small></span><input id="reminder-in-app" type="checkbox"><i></i></label>
+            <label class="reminder-toggle"><span><strong>WeChat subscription reminders</strong><small>Not connected; only your preference is saved</small></span><input id="reminder-wechat" type="checkbox"><i></i></label>
+          </div>
+          <h2 class="reminder-section-title">Reminder timing</h2>
+          <div class="reminder-card reminder-times"><label>3 days before due date <input id="reminder-three-days" class="picker-input" type="text" readonly placeholder="Tap to choose"></label><label>On the due date <input id="reminder-due-day" class="picker-input" type="text" readonly placeholder="Tap to choose"></label></div>
+          <h2 class="reminder-section-title">Delivery status</h2>
+          <div id="reminder-status-list" class="reminder-card reminder-status-list"></div>
+          <p class="reminder-notice">In-app reminders appear only when you open the page. WeChat subscription messages are not connected, so no WeChat notification is sent.</p>
+          <button id="save-reminders" class="primary reminder-save" type="button">Save reminder settings</button>
+        </div>
+      </section>
+      <div id="profile-picker" class="modal-backdrop" hidden><div class="modal-card picker-card" role="dialog" aria-modal="true" aria-labelledby="picker-title"><h2 id="picker-title"></h2><div id="picker-search-wrap" class="picker-search-wrap" hidden><input id="picker-search" type="search" placeholder="Search provinces or cities" aria-label="Search provinces or cities"><div id="picker-search-results" class="picker-search-results" hidden></div></div><div id="picker-city-labels" class="picker-city-labels" hidden><span>Province</span><span>City</span></div><div id="picker-columns" class="picker-columns"></div><div class="modal-actions"><button id="picker-cancel" type="button">Cancel</button><button id="picker-confirm" class="primary" type="button">Confirm</button></div></div></div>
+    </section>
+
+    <nav class="bottom-nav" aria-label="Navigation">
+      <button class="tab active" type="button" data-tab="chat" aria-label="Assistant"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 5.5h16v11H9l-5 3v-14Z"/></svg><span>Assistant</span></button>
+      <button class="tab" type="button" data-tab="calendar" aria-label="Plan calendar"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M7 3v4M17 3v4M3 10h18M8 15l2.5 2.5L16 12"/></svg><span>Plan</span></button>
+      <button class="tab" type="button" data-tab="profile" aria-label="Profile"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="8" r="4"/><path d="M4.5 21c.5-4 3-6 7.5-6s7 2 7.5 6"/></svg><span>Profile</span></button>
+    </nav>
+  </div>
+  <script src="i18n-en.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>

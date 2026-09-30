@@ -1,0 +1,1011 @@
+{
+  "meta": {
+    "title": "Shanghai Area Rental, Commute, Amenities & Utilities Base Data (上海)",
+    "researched_at": "2026-09-22",
+    "rent_method": "Sampling of live listings on the Anjuke (安居客) platform (2026-09-22, ~60 listings); same methodology for whole-unit and shared rentals; ranges are reference ranges from listing samples, not rental statistics",
+    "commute_method": "Estimated from Shanghai Metro official network transfer routes: 2.5 min per segment + 6 min per transfer + 12 min out-of-station walking/waiting, rounded to 5 min; not measured with a map app; queried 2026-09-22",
+    "data_status_values": {
+      "sample_reference": "Reference range from listing samples, not statistical; usable for \"current estimate\"-style area reference, must be presented to the user as a sample range",
+      "estimated": "Network-based estimate, not measured; presented as an estimate",
+      "pending_verification": "Not verified item by item; the product must label it \"pending verification\"",
+      "verified": "Official/authoritative source after 2024",
+      "legacy_corroborated": "Cited from pre-2024 official documents, with corroborating evidence it is still current; source and timeliness must be labeled"
+    }
+  },
+  "areas": [
+    {
+      "id": "zhangjiang",
+      "name": "Pudong Zhangjiang (浦东张江)",
+      "boundary": "Around Zhangjiang Hi-Tech Station (张江高科站); Zhangjiang Road (张江路) / Keyuan Road (科苑路) / Guanglan Road (广兰路) area",
+      "reference_station": "Zhangjiang Hi-Tech (张江高科) (Line 2)",
+      "rent_method": "Sampling of live listings on the Anjuke (安居客) platform; same methodology for whole-unit and shared rentals",
+      "rent_period": "2026-09-22 (listing snapshot date)",
+      "rent_source": "Anjuke (安居客) Shanghai rental channel; 21st Century Business Herald (21世纪经济报道)",
+      "rent_whole_1br": {
+        "min": 3800,
+        "max": 5500,
+        "unit": "CNY/month"
+      },
+      "rent_whole_2br": {
+        "min": 4800,
+        "max": 4800,
+        "unit": "CNY/month"
+      },
+      "rent_whole_other": null,
+      "rent_shared_single_room": {
+        "min": 2200,
+        "max": 3000,
+        "unit": "CNY/month",
+        "note": "Shared single-room price, not split into master/secondary bedroom"
+      },
+      "rent_note": "Reference range from listing samples, not statistical; whole-unit 2BR is a single sample",
+      "data_status": "sample_reference",
+      "commute": [
+        {
+          "to": "Lujiazui (陆家嘴)",
+          "minutes_min": 30,
+          "minutes_max": 30,
+          "route": "Direct on Line 2 for 6 stations (Zhangjiang Hi-Tech (张江高科) — Longyang Road (龙阳路) — Century Park (世纪公园) — Shanghai Science & Technology Museum (上海科技馆) — Century Avenue (世纪大道) — Dongchang Road (东昌路) — Lujiazui (陆家嘴))",
+          "data_status": "estimated"
+        },
+        {
+          "to": "Zhangjiang Hi-Tech (张江高科)",
+          "minutes_min": 10,
+          "minutes_max": 10,
+          "route": "Same station, including out-of-station walking",
+          "data_status": "estimated"
+        },
+        {
+          "to": "Xujiahui (徐家汇)",
+          "minutes_min": 40,
+          "minutes_max": 45,
+          "route": "Line 2 to Century Avenue (世纪大道), transfer to Line 9; 1 transfer",
+          "data_status": "estimated"
+        }
+      ],
+      "facilities": {
+        "markets": [
+          {
+            "name": "Zhangjiang Wet Market (张江农贸市场)",
+            "location": "Zhangjiang Road (张江路)",
+            "verified": false,
+            "note": "Pending map POI verification"
+          },
+          {
+            "name": "Sunqiao Wet Market (孙桥菜市场)",
+            "location": "Sunqiao (孙桥)",
+            "verified": false,
+            "note": "Pending map POI verification"
+          },
+          {
+            "name": "Sunhuan Road Produce Supermarket (孙环路蔬果超市)",
+            "location": "Sunhuan Road area (孙环路一带)",
+            "verified": false,
+            "note": "Pending map POI verification"
+          }
+        ],
+        "supermarkets": [
+          {
+            "name": "Freshippo (盒马鲜生)",
+            "location": "Changtai Plaza (长泰广场) branch",
+            "verified": false,
+            "note": "Pending map POI verification"
+          },
+          {
+            "name": "RT-Mart (大润发)",
+            "location": "Jinqiao (金桥) branch, nearby",
+            "verified": false,
+            "note": "Pending map POI verification"
+          },
+          {
+            "name": "Lianhua Supermarket (联华超市)",
+            "location": "Zhangjiang community (张江社区) branch",
+            "verified": false,
+            "note": "Pending map POI verification"
+          }
+        ],
+        "malls": [
+          {
+            "name": "Changtai Plaza (长泰广场)",
+            "location": null,
+            "verified": false,
+            "note": "Pending map POI verification"
+          },
+          {
+            "name": "Retail near Zhangjiang Changtai Plaza (张江长泰广场)",
+            "location": null,
+            "verified": false,
+            "note": "Pending map POI verification"
+          }
+        ]
+      }
+    },
+    {
+      "id": "jinqiao",
+      "name": "Pudong Jinqiao (浦东金桥)",
+      "boundary": "Around Jinqiao Station (金桥站) / Jinyang Road (金杨路); Jinyang New Village (金杨新村) and Biyun Community (碧云社区)",
+      "reference_station": "Jinqiao (金桥) (Line 9)",
+      "rent_method": "Sampling of live listings on the Anjuke (安居客) platform; same methodology for whole-unit and shared rentals",
+      "rent_period": "2026-09-22 (listing snapshot date)",
+      "rent_source": "Anjuke (安居客) Shanghai rental channel",
+      "rent_whole_1br": null,
+      "rent_whole_2br": {
+        "min": 4800,
+        "max": 5800,
+        "unit": "CNY/month"
+      },
+      "rent_whole_other": null,
+      "rent_shared_single_room": {
+        "min": 1950,
+        "max": 1950,
+        "unit": "CNY/month",
+        "note": "Shared single-room price, not split into master/secondary bedroom"
+      },
+      "rent_note": "Reference range from listing samples, not statistical; shared single room is a single sample; sampled sub-areas are Jinyang New Village (金杨新村) / Biyun (碧云), near Jinqiao Station (金桥站)",
+      "data_status": "sample_reference",
+      "commute": [
+        {
+          "to": "Lujiazui (陆家嘴)",
+          "minutes_min": 35,
+          "minutes_max": 35,
+          "route": "Line 9 to Century Avenue (世纪大道), transfer to Line 2; 1 transfer",
+          "data_status": "estimated"
+        },
+        {
+          "to": "Zhangjiang Hi-Tech (张江高科)",
+          "minutes_min": 40,
+          "minutes_max": 40,
+          "route": "Line 9 to Century Avenue (世纪大道), transfer to Line 2; 1 transfer",
+          "data_status": "estimated"
+        },
+        {
+          "to": "Xujiahui (徐家汇)",
+          "minutes_min": 40,
+          "minutes_max": 40,
+          "route": "Direct on Line 9 for 11 stations",
+          "data_status": "estimated"
+        }
+      ],
+      "facilities": {
+        "markets": [
+          {
+            "name": "Jinqiao Wet Market (金桥菜市场)",
+            "location": "Jinqiao (金桥)",
+            "verified": false,
+            "note": "Pending map POI verification"
+          },
+          {
+            "name": "Biyun Wet Market (碧云菜市场)",
+            "location": "Biyun (碧云)",
+            "verified": false,
+            "note": "Pending map POI verification"
+          },
+          {
+            "name": "Jinyang Wet Market (金杨菜市场)",
+            "location": "Jinyang (金杨)",
+            "verified": false,
+            "note": "Pending map POI verification"
+          }
+        ],
+        "supermarkets": [
+          {
+            "name": "Carrefour (家乐福)",
+            "location": "Jinqiao branch (金桥店)",
+            "verified": false,
+            "note": "Pending map POI verification"
+          },
+          {
+            "name": "Freshippo (盒马鲜生)",
+            "location": "Biyun branch (碧云店)",
+            "verified": false,
+            "note": "Pending map POI verification"
+          },
+          {
+            "name": "Lianhua Supermarket (联华超市)",
+            "location": null,
+            "verified": false,
+            "note": "Pending map POI verification"
+          }
+        ],
+        "malls": [
+          {
+            "name": "Jinqiao International Commercial Plaza (金桥国际商业广场)",
+            "location": null,
+            "verified": false,
+            "note": "Pending map POI verification"
+          },
+          {
+            "name": "LaLaport Shanghai Jinqiao (上海金桥)",
+            "location": null,
+            "verified": false,
+            "note": "Pending map POI verification"
+          }
+        ]
+      }
+    },
+    {
+      "id": "pujiang",
+      "name": "Minhang Pujiang Town (闵行浦江镇)",
+      "boundary": "Around Pujiang Town Station (浦江镇站) on Line 8; Pujin Road (浦锦路) / Lianhang Road (联航路) area",
+      "reference_station": "Pujiang Town (浦江镇) (Line 8)",
+      "rent_method": "Sampling of live listings on the Anjuke (安居客) platform; same methodology for whole-unit and shared rentals",
+      "rent_period": "2026-09-22 (listing snapshot date)",
+      "rent_source": "Anjuke (安居客) Shanghai rental channel; 21st Century Business Herald (21世纪经济报道)",
+      "rent_whole_1br": null,
+      "rent_whole_2br": {
+        "min": 3200,
+        "max": 4800,
+        "unit": "CNY/month"
+      },
+      "rent_whole_other": null,
+      "rent_shared_single_room": null,
+      "rent_note": "Reference range from listing samples, not statistical; 21st Century Business Herald (21世纪经济报道) reports most 2BR units in Pujiang Town (浦江镇) in 2026 are in the 5000–5500+ range",
+      "data_status": "sample_reference",
+      "commute": [
+        {
+          "to": "Lujiazui (陆家嘴)",
+          "minutes_min": 50,
+          "minutes_max": 55,
+          "route": "Line 8 to People's Square (人民广场), transfer to Line 2; 1 transfer",
+          "data_status": "estimated"
+        },
+        {
+          "to": "Zhangjiang Hi-Tech (张江高科)",
+          "minutes_min": 65,
+          "minutes_max": 70,
+          "route": "Line 8 to People's Square (人民广场), transfer to Line 2; 1 transfer",
+          "data_status": "estimated"
+        },
+        {
+          "to": "Xujiahui (徐家汇)",
+          "minutes_min": 60,
+          "minutes_max": 60,
+          "route": "Line 8 to People's Square (人民广场), transfer to Line 1; 1 transfer",
+          "data_status": "estimated"
+        }
+      ],
+      "facilities": {
+        "markets": [
+          {
+            "name": "Pujiang Town Wet Market (浦江镇菜市场)",
+            "location": "Pujiang Town (浦江镇)",
+            "verified": false,
+            "note": "Pending map POI verification"
+          },
+          {
+            "name": "Lianhang Road Wet Market (联航路菜场)",
+            "location": "Lianhang Road (联航路)",
+            "verified": false,
+            "note": "Pending map POI verification"
+          },
+          {
+            "name": "Jiangyue Road Wet Market (江月路菜场)",
+            "location": "Jiangyue Road (江月路)",
+            "verified": false,
+            "note": "Pending map POI verification"
+          }
+        ],
+        "supermarkets": [
+          {
+            "name": "RT-Mart (大润发)",
+            "location": "Pujiang branch (浦江店)",
+            "verified": false,
+            "note": "Pending map POI verification"
+          },
+          {
+            "name": "Yonghui Superstores (永辉超市)",
+            "location": "Pujiang Wanda (浦江万达) branch",
+            "verified": false,
+            "note": "Pending map POI verification"
+          },
+          {
+            "name": "Lianhua Supermarket (联华超市)",
+            "location": null,
+            "verified": false,
+            "note": "Pending map POI verification"
+          }
+        ],
+        "malls": [
+          {
+            "name": "Pujiang Wanda Plaza (浦江万达广场)",
+            "location": null,
+            "verified": false,
+            "note": "Pending map POI verification"
+          }
+        ]
+      }
+    },
+    {
+      "id": "wujing",
+      "name": "Minhang Wujing (闵行吴泾)",
+      "boundary": "Around Jiangchuan Road Station (江川路站) on Line 5; Wujing Town (吴泾镇) / Zizhu Hi-Tech Zone (紫竹高新区) area",
+      "reference_station": "Jiangchuan Road (江川路) (Line 5)",
+      "rent_method": "Sampling of live listings on the Anjuke (安居客) platform; same methodology for whole-unit and shared rentals",
+      "rent_period": "2026-09-22 (listing snapshot date)",
+      "rent_source": "Anjuke (安居客) Shanghai rental channel",
+      "rent_whole_1br": {
+        "min": 2200,
+        "max": 3300,
+        "unit": "CNY/month"
+      },
+      "rent_whole_2br": {
+        "min": 4500,
+        "max": 4500,
+        "unit": "CNY/month"
+      },
+      "rent_whole_other": null,
+      "rent_shared_single_room": null,
+      "rent_note": "Reference range from listing samples, not statistical; whole-unit 2BR is a single sample",
+      "data_status": "sample_reference",
+      "commute": [
+        {
+          "to": "Lujiazui (陆家嘴)",
+          "minutes_min": 75,
+          "minutes_max": 80,
+          "route": "Line 5 to Xinzhuang (莘庄), transfer to Line 1 to People's Square (人民广场), then transfer to Line 2; 2 transfers",
+          "data_status": "estimated"
+        },
+        {
+          "to": "Zhangjiang Hi-Tech (张江高科)",
+          "minutes_min": 90,
+          "minutes_max": 90,
+          "route": "Line 5 to Xinzhuang (莘庄), transfer to Line 1 to People's Square (人民广场), then transfer to Line 2; 2 transfers; no reasonable short-distance option",
+          "data_status": "estimated"
+        },
+        {
+          "to": "Xujiahui (徐家汇)",
+          "minutes_min": 50,
+          "minutes_max": 55,
+          "route": "Line 5 to Xinzhuang (莘庄), transfer to Line 1; 1 transfer",
+          "data_status": "estimated"
+        }
+      ],
+      "facilities": {
+        "markets": [
+          {
+            "name": "Wujing Wet Market (吴泾菜市场)",
+            "location": "Wujing (吴泾)",
+            "verified": false,
+            "note": "Pending map POI verification"
+          },
+          {
+            "name": "Zizhu Wet Market (紫竹菜场)",
+            "location": "Zizhu (紫竹)",
+            "verified": false,
+            "note": "Pending map POI verification"
+          },
+          {
+            "name": "Tangwan Wet Market (塘湾菜市场)",
+            "location": "Tangwan (塘湾)",
+            "verified": false,
+            "note": "Pending map POI verification"
+          }
+        ],
+        "supermarkets": [
+          {
+            "name": "Yonghui Superstores (永辉超市)",
+            "location": "Zizhu Peninsula (紫竹半岛) branch",
+            "verified": false,
+            "note": "Pending map POI verification"
+          },
+          {
+            "name": "RT-Mart (大润发)",
+            "location": "Minhang branch (闵行店)",
+            "verified": false,
+            "note": "Pending map POI verification"
+          },
+          {
+            "name": "Lianhua Supermarket (联华超市)",
+            "location": null,
+            "verified": false,
+            "note": "Pending map POI verification"
+          }
+        ],
+        "malls": [
+          {
+            "name": "Wujing Powerlong Plaza (吴泾宝龙广场)",
+            "location": null,
+            "verified": false,
+            "note": "Pending map POI verification"
+          },
+          {
+            "name": "Zizhu Peninsula (紫竹半岛) commercial district",
+            "location": null,
+            "verified": false,
+            "note": "Pending map POI verification"
+          }
+        ]
+      }
+    },
+    {
+      "id": "huajing",
+      "name": "Xuhui Huajing / Shanghai South Railway Station (徐汇华泾/上海南站)",
+      "boundary": "Around Shanghai South Railway Station (上海南站) and Huajing Town (华泾镇); Huajing Road (华泾路) / Zhumei Road (朱梅路) area",
+      "reference_station": "Shanghai South Railway Station (上海南站) (Lines 1/3/15)",
+      "rent_method": "Sampling of live listings on the Anjuke (安居客) platform; same methodology for whole-unit and shared rentals",
+      "rent_period": "2026-09-22 (listing snapshot date)",
+      "rent_source": "Anjuke (安居客) Shanghai rental channel",
+      "rent_whole_1br": {
+        "min": 3950,
+        "max": 4900,
+        "unit": "CNY/month"
+      },
+      "rent_whole_2br": {
+        "min": 5600,
+        "max": 5600,
+        "unit": "CNY/month"
+      },
+      "rent_whole_other": null,
+      "rent_shared_single_room": null,
+      "rent_note": "Reference range from listing samples, not statistical; whole-unit 2BR is a single sample",
+      "data_status": "sample_reference",
+      "commute": [
+        {
+          "to": "Lujiazui (陆家嘴)",
+          "minutes_min": 40,
+          "minutes_max": 45,
+          "route": "Line 1 to People's Square (人民广场), transfer to Line 2; 1 transfer",
+          "data_status": "estimated"
+        },
+        {
+          "to": "Zhangjiang Hi-Tech (张江高科)",
+          "minutes_min": 55,
+          "minutes_max": 60,
+          "route": "Line 1 to People's Square (人民广场), transfer to Line 2; 1 transfer",
+          "data_status": "estimated"
+        },
+        {
+          "to": "Xujiahui (徐家汇)",
+          "minutes_min": 20,
+          "minutes_max": 20,
+          "route": "Direct on Line 1 for 3 stations",
+          "data_status": "estimated"
+        }
+      ],
+      "facilities": {
+        "markets": [
+          {
+            "name": "Huajing Wet Market (华泾菜市场)",
+            "location": "Huajing (华泾)",
+            "verified": false,
+            "note": "Pending map POI verification"
+          },
+          {
+            "name": "Changqiao Wet Market (长桥菜市场)",
+            "location": "Changqiao (长桥)",
+            "verified": false,
+            "note": "Pending map POI verification"
+          },
+          {
+            "name": "Huajing Road Wet Market (华泾路菜场)",
+            "location": "Huajing Road (华泾路)",
+            "verified": false,
+            "note": "Pending map POI verification"
+          }
+        ],
+        "supermarkets": [
+          {
+            "name": "Carrefour (家乐福)",
+            "location": "Shanghai South Railway Station (上海南站) branch",
+            "verified": false,
+            "note": "Pending map POI verification"
+          },
+          {
+            "name": "Walmart (沃尔玛)",
+            "location": "Xuhui branch (徐汇店)",
+            "verified": false,
+            "note": "Pending map POI verification"
+          },
+          {
+            "name": "Freshippo (盒马鲜生)",
+            "location": null,
+            "verified": false,
+            "note": "Pending map POI verification"
+          }
+        ],
+        "malls": [
+          {
+            "name": "Xuhui Vanke Center (徐汇万科中心)",
+            "location": null,
+            "verified": false,
+            "note": "Pending map POI verification"
+          },
+          {
+            "name": "Shanghai South Railway Station (上海南站) South Plaza retail",
+            "location": null,
+            "verified": false,
+            "note": "Pending map POI verification"
+          }
+        ]
+      }
+    },
+    {
+      "id": "caoyang",
+      "name": "Putuo Caoyang (普陀曹杨)",
+      "boundary": "Around Caoyang Road Station (曹杨路站); Caoyang New Village (曹杨新村) / Ganquan (甘泉) area",
+      "reference_station": "Caoyang Road (曹杨路) (Lines 3/4/11/14)",
+      "rent_method": "Sampling of live listings on the Anjuke (安居客) platform; same methodology for whole-unit and shared rentals",
+      "rent_period": "2026-09-22 (listing snapshot date)",
+      "rent_source": "Anjuke (安居客) Shanghai rental channel; 21st Century Business Herald (21世纪经济报道)",
+      "rent_whole_1br": {
+        "min": 3800,
+        "max": 3800,
+        "unit": "CNY/month"
+      },
+      "rent_whole_2br": {
+        "min": 4800,
+        "max": 4900,
+        "unit": "CNY/month"
+      },
+      "rent_whole_other": null,
+      "rent_shared_single_room": {
+        "min": 1800,
+        "max": 1800,
+        "unit": "CNY/month",
+        "note": "Shared single-room price, not split into master/secondary bedroom"
+      },
+      "rent_note": "Reference range from listing samples, not statistical; whole-unit 1BR is a single sample; 21st Century Business Herald (21世纪经济报道) reports whole-unit 1BR in Putuo (普陀) at ~5000; shared single room is a single sample",
+      "data_status": "sample_reference",
+      "commute": [
+        {
+          "to": "Lujiazui (陆家嘴)",
+          "minutes_min": 30,
+          "minutes_max": 30,
+          "route": "Direct on Line 14 for 7 stations",
+          "data_status": "estimated"
+        },
+        {
+          "to": "Zhangjiang Hi-Tech (张江高科)",
+          "minutes_min": 50,
+          "minutes_max": 50,
+          "route": "Line 14 to Lujiazui (陆家嘴), transfer to Line 2; 1 transfer",
+          "data_status": "estimated"
+        },
+        {
+          "to": "Xujiahui (徐家汇)",
+          "minutes_min": 20,
+          "minutes_max": 25,
+          "route": "Direct on Line 11 for 4 stations",
+          "data_status": "estimated"
+        }
+      ],
+      "facilities": {
+        "markets": [
+          {
+            "name": "Caoyang Wet Market (曹杨菜市场)",
+            "location": "Caoyang (曹杨)",
+            "verified": false,
+            "note": "Pending map POI verification"
+          },
+          {
+            "name": "Lanxi Road Wet Market (兰溪路菜场)",
+            "location": "Lanxi Road (兰溪路)",
+            "verified": false,
+            "note": "Pending map POI verification"
+          },
+          {
+            "name": "Wuning Road Wet Market (武宁路菜场)",
+            "location": "Wuning Road (武宁路)",
+            "verified": false,
+            "note": "Pending map POI verification"
+          }
+        ],
+        "supermarkets": [
+          {
+            "name": "Carrefour (家乐福)",
+            "location": "Wuning branch (武宁店)",
+            "verified": false,
+            "note": "Pending map POI verification"
+          },
+          {
+            "name": "Walmart (沃尔玛)",
+            "location": "Zhongshan Park (中山公园) branch",
+            "verified": false,
+            "note": "Pending map POI verification"
+          },
+          {
+            "name": "Lianhua Supermarket (联华超市)",
+            "location": null,
+            "verified": false,
+            "note": "Pending map POI verification"
+          }
+        ],
+        "malls": [
+          {
+            "name": "Bailian Zhonghuan Shopping Mall (百联中环购物广场)",
+            "location": null,
+            "verified": false,
+            "note": "Pending map POI verification"
+          },
+          {
+            "name": "Printemps (巴黎春天)",
+            "location": "Changshou Road (长寿路) branch, nearby",
+            "verified": false,
+            "note": "Pending map POI verification"
+          }
+        ]
+      }
+    },
+    {
+      "id": "zhaoxiang",
+      "name": "Qingpu Zhaoxiang (青浦赵巷)",
+      "boundary": "Around Zhaoxiang Station (赵巷站) on Line 17; Jiasong Middle Road (嘉松中路) / Yinggang East Road (盈港东路) area",
+      "reference_station": "Zhaoxiang (赵巷) (Line 17)",
+      "rent_method": "Sampling of live listings on the Anjuke (安居客) platform; same methodology for whole-unit and shared rentals",
+      "rent_period": "2026-09-22 (listing snapshot date)",
+      "rent_source": "Anjuke (安居客) Shanghai rental channel",
+      "rent_whole_1br": null,
+      "rent_whole_2br": null,
+      "rent_whole_other": {
+        "min": 3800,
+        "max": 4880,
+        "note": "Whole-unit listing, bedroom count label incomplete",
+        "unit": "CNY/month"
+      },
+      "rent_shared_single_room": null,
+      "rent_note": "Reference range from listing samples, not statistical; bedroom count labels incomplete for whole-unit listings",
+      "data_status": "sample_reference",
+      "commute": [
+        {
+          "to": "Lujiazui (陆家嘴)",
+          "minutes_min": 60,
+          "minutes_max": 65,
+          "route": "Line 17 to Hongqiao Railway Station (虹桥火车站), transfer to Line 2; 1 transfer",
+          "data_status": "estimated"
+        },
+        {
+          "to": "Zhangjiang Hi-Tech (张江高科)",
+          "minutes_min": 75,
+          "minutes_max": 80,
+          "route": "Line 17 to Hongqiao Railway Station (虹桥火车站), transfer to Line 2; 1 transfer",
+          "data_status": "estimated"
+        },
+        {
+          "to": "Xujiahui (徐家汇)",
+          "minutes_min": 60,
+          "minutes_max": 60,
+          "route": "Line 17 to Hongqiao Railway Station (虹桥火车站), transfer to Line 2, then transfer to Line 11 at Jiangsu Road (江苏路); 2 transfers",
+          "data_status": "estimated"
+        }
+      ],
+      "facilities": {
+        "markets": [
+          {
+            "name": "Zhaoxiang Wet Market (赵巷菜市场)",
+            "location": "Zhaoxiang (赵巷)",
+            "verified": false,
+            "note": "Pending map POI verification"
+          },
+          {
+            "name": "Yinggang Wet Market (盈港菜场)",
+            "location": "Yinggang (盈港)",
+            "verified": false,
+            "note": "Pending map POI verification"
+          },
+          {
+            "name": "Jiasong Middle Road Wet Market (嘉松中路菜场)",
+            "location": "Jiasong Middle Road (嘉松中路)",
+            "verified": false,
+            "note": "Pending map POI verification"
+          }
+        ],
+        "supermarkets": [
+          {
+            "name": "RT-Mart (大润发)",
+            "location": "Qingpu branch (青浦店)",
+            "verified": false,
+            "note": "Pending map POI verification"
+          },
+          {
+            "name": "Yonghui Superstores (永辉超市)",
+            "location": "Qingpu Wanda (青浦万达) branch",
+            "verified": false,
+            "note": "Pending map POI verification"
+          },
+          {
+            "name": "Lianhua Supermarket (联华超市)",
+            "location": null,
+            "verified": false,
+            "note": "Pending map POI verification"
+          }
+        ],
+        "malls": [
+          {
+            "name": "Qingpu Wanda Mall (青浦万达茂)",
+            "location": null,
+            "verified": false,
+            "note": "Pending map POI verification"
+          },
+          {
+            "name": "Qingpu Wuyue Plaza (青浦吾悦广场)",
+            "location": null,
+            "verified": false,
+            "note": "Pending map POI verification"
+          }
+        ]
+      }
+    },
+    {
+      "id": "jiading",
+      "name": "Jiading Urban Area (嘉定城区)",
+      "boundary": "Around Jiading West Station (嘉定西站) on Line 11; Jiading old town (嘉定老城区)",
+      "reference_station": "Jiading West (嘉定西) (Line 11)",
+      "rent_method": "Sampling of live listings on the Anjuke (安居客) platform; same methodology for whole-unit and shared rentals",
+      "rent_period": "2026-09-22 (listing snapshot date)",
+      "rent_source": "Anjuke (安居客) Shanghai rental channel",
+      "rent_whole_1br": null,
+      "rent_whole_2br": {
+        "min": 3300,
+        "max": 3300,
+        "unit": "CNY/month"
+      },
+      "rent_whole_other": null,
+      "rent_shared_single_room": null,
+      "rent_note": "Reference range from listing samples, not statistical; whole-unit 2BR is a single sample",
+      "data_status": "sample_reference",
+      "commute": [
+        {
+          "to": "Lujiazui (陆家嘴)",
+          "minutes_min": 65,
+          "minutes_max": 65,
+          "route": "Line 11 to Jiangsu Road (江苏路), transfer to Line 2; 1 transfer",
+          "data_status": "estimated"
+        },
+        {
+          "to": "Zhangjiang Hi-Tech (张江高科)",
+          "minutes_min": 80,
+          "minutes_max": 80,
+          "route": "Line 11 to Jiangsu Road (江苏路), transfer to Line 2; 1 transfer",
+          "data_status": "estimated"
+        },
+        {
+          "to": "Xujiahui (徐家汇)",
+          "minutes_min": 50,
+          "minutes_max": 55,
+          "route": "Direct on Line 11 for 16 stations",
+          "data_status": "estimated"
+        }
+      ],
+      "facilities": {
+        "markets": [
+          {
+            "name": "Jiading Wet Market (嘉定菜市场)",
+            "location": "Jiading (嘉定)",
+            "verified": false,
+            "note": "Pending map POI verification"
+          },
+          {
+            "name": "Chengzhong Road Wet Market (城中路菜场)",
+            "location": "Chengzhong Road (城中路)",
+            "verified": false,
+            "note": "Pending map POI verification"
+          },
+          {
+            "name": "Jiading West Wet Market (嘉定西菜场)",
+            "location": "Jiading West (嘉定西)",
+            "verified": false,
+            "note": "Pending map POI verification"
+          }
+        ],
+        "supermarkets": [
+          {
+            "name": "RT-Mart (大润发)",
+            "location": "Jiading branch (嘉定店)",
+            "verified": false,
+            "note": "Pending map POI verification"
+          },
+          {
+            "name": "Walmart (沃尔玛)",
+            "location": "Jiading branch (嘉定店)",
+            "verified": false,
+            "note": "Pending map POI verification"
+          },
+          {
+            "name": "Lianhua Supermarket (联华超市)",
+            "location": null,
+            "verified": false,
+            "note": "Pending map POI verification"
+          }
+        ],
+        "malls": [
+          {
+            "name": "Jiading Bailian (嘉定百联)",
+            "location": null,
+            "verified": false,
+            "note": "Pending map POI verification"
+          },
+          {
+            "name": "CITIC Pacific Wanda Plaza (中信泰富万达广场)",
+            "location": "Jiading branch (嘉定店)",
+            "verified": false,
+            "note": "Pending map POI verification"
+          }
+        ]
+      }
+    }
+  ],
+  "utilities": [
+    {
+      "utility": "water",
+      "tier": "tier1: 0–220 cubic meters/year",
+      "unit": "cubic meter",
+      "price": 4.05,
+      "price_unit": "CNY/cubic meter",
+      "note": "Combined water price (including sewage treatment fee); shared-meter households temporarily billed at tier 1; households of 5+ get +100 cubic meters added to the annual baseline",
+      "source": "Appendix of China Securities Pengyuan \"Pudong Water Rating Report\" (中证鹏元《浦东水务评级报告》)",
+      "source_url": "https://www.cspengyuan.com/api/files/6960d82442b27b2bdc79a1c8",
+      "published": "Published after 2024; Pudong price adjusted 2024-01",
+      "data_status": "verified"
+    },
+    {
+      "utility": "water",
+      "tier": "tier2: 221–300 cubic meters/year",
+      "unit": "cubic meter",
+      "price": 5.8,
+      "price_unit": "CNY/cubic meter",
+      "note": "Combined water price",
+      "source": "Appendix of China Securities Pengyuan \"Pudong Water Rating Report\" (中证鹏元《浦东水务评级报告》)",
+      "source_url": "https://www.cspengyuan.com/api/files/6960d82442b27b2bdc79a1c8",
+      "published": "Published after 2024",
+      "data_status": "verified"
+    },
+    {
+      "utility": "water",
+      "tier": "tier3: above 300 cubic meters/year",
+      "unit": "cubic meter",
+      "price": 8.79,
+      "price_unit": "CNY/cubic meter",
+      "note": "Combined water price",
+      "source": "Appendix of China Securities Pengyuan \"Pudong Water Rating Report\" (中证鹏元《浦东水务评级报告》)",
+      "source_url": "https://www.cspengyuan.com/api/files/6960d82442b27b2bdc79a1c8",
+      "published": "Published after 2024",
+      "data_status": "verified"
+    },
+    {
+      "utility": "water",
+      "tier": "Sewage treatment fee calculation rule",
+      "unit": "cubic meter",
+      "price": 2.0,
+      "price_unit": "CNY/cubic meter",
+      "note": "Charged as water usage × 2.00 × 0.9",
+      "source": "Appendix of China Securities Pengyuan \"Pudong Water Rating Report\" (中证鹏元《浦东水务评级报告》)",
+      "source_url": "https://www.cspengyuan.com/api/files/6960d82442b27b2bdc79a1c8",
+      "published": "Published after 2024",
+      "data_status": "verified"
+    },
+    {
+      "utility": "electricity",
+      "tier": "tier1: 0–3120 kWh/year",
+      "unit": "kWh",
+      "price": 0.617,
+      "price_unit": "CNY/kWh",
+      "note": "Time-of-use rates: peak 0.617 / off-peak 0.307",
+      "source": "Shanghai Municipal Development and Reform Commission residential tiered electricity pricing document (上海市发改委)",
+      "source_url": "https://fgw.sh.gov.cn/cmsres/ec/ec34097f16b4486f82f1f31c4e4d3d3a/63984da62e3e73b33e4e3288ad1a3279.pdf",
+      "published": "Document dated 2021-10-25; 2025 corroboration shows it is still current",
+      "data_status": "legacy_corroborated"
+    },
+    {
+      "utility": "electricity",
+      "tier": "tier2: 3121–4800 kWh/year",
+      "unit": "kWh",
+      "price": 0.667,
+      "price_unit": "CNY/kWh",
+      "note": "Time-of-use rates: peak 0.677 / off-peak 0.337",
+      "source": "Shanghai Municipal Development and Reform Commission residential tiered electricity pricing document (上海市发改委)",
+      "source_url": "https://fgw.sh.gov.cn/cmsres/ec/ec34097f16b4486f82f1f31c4e4d3d3a/63984da62e3e73b33e4e3288ad1a3279.pdf",
+      "published": "Document dated 2021-10-25; 2025 corroboration shows it is still current",
+      "data_status": "legacy_corroborated"
+    },
+    {
+      "utility": "electricity",
+      "tier": "tier3: above 4800 kWh/year",
+      "unit": "kWh",
+      "price": 0.917,
+      "price_unit": "CNY/kWh",
+      "note": "Time-of-use rates: peak 0.977 / off-peak 0.487",
+      "source": "Shanghai Municipal Development and Reform Commission residential tiered electricity pricing document (上海市发改委)",
+      "source_url": "https://fgw.sh.gov.cn/cmsres/ec/ec34097f16b4486f82f1f31c4e4d3d3a/63984da62e3e73b33e4e3288ad1a3279.pdf",
+      "published": "Document dated 2021-10-25; 2025 corroboration shows it is still current",
+      "data_status": "legacy_corroborated"
+    },
+    {
+      "utility": "gas",
+      "tier": "tier1: 0–310 cubic meters/year",
+      "unit": "cubic meter",
+      "price": 3.0,
+      "price_unit": "CNY/cubic meter",
+      "note": "",
+      "source": "Shanghai government English-language official page price table (cross-referenced) (上海市英文政务页)",
+      "source_url": "https://english.shanghai.gov.cn/en-EstablishaCompany/20231209/941408eab4d04397ba21064971e9385d.html",
+      "published": "2023-12-09, earlier than the 2024-01 requirement",
+      "data_status": "pending_verification"
+    },
+    {
+      "utility": "gas",
+      "tier": "tier2: 311–520 cubic meters/year",
+      "unit": "cubic meter",
+      "price": 3.3,
+      "price_unit": "CNY/cubic meter",
+      "note": "",
+      "source": "Shanghai government English-language official page price table (cross-referenced) (上海市英文政务页)",
+      "source_url": "https://english.shanghai.gov.cn/en-EstablishaCompany/20231209/941408eab4d04397ba21064971e9385d.html",
+      "published": "2023-12-09",
+      "data_status": "pending_verification"
+    },
+    {
+      "utility": "gas",
+      "tier": "tier3: above 520 cubic meters/year",
+      "unit": "cubic meter",
+      "price": 4.2,
+      "price_unit": "CNY/cubic meter",
+      "note": "",
+      "source": "Shanghai government English-language official page price table (cross-referenced) (上海市英文政务页)",
+      "source_url": "https://english.shanghai.gov.cn/en-EstablishaCompany/20231209/941408eab4d04397ba21064971e9385d.html",
+      "published": "2023-12-09",
+      "data_status": "pending_verification"
+    },
+    {
+      "utility": "broadband",
+      "tier": "China Telecom Shanghai 2025A standalone broadband 1000M (上海电信2025A单宽1000M)",
+      "unit": "month",
+      "price": 100.0,
+      "price_unit": "CNY/month",
+      "note": "Downlink 1000M / uplink 100M; 1200 CNY/year; 100 CNY installation and commissioning fee for new installs; 12-month contract term, auto-renewed upon expiry",
+      "source": "China Telecom Shanghai official 2025A promotion description (上海电信官方)",
+      "source_url": "https://sh.189.cn/pdf/newxy_1766040166011.pdf",
+      "published": "2025",
+      "data_status": "verified"
+    }
+  ],
+  "gaps": [
+    {
+      "category": "Rent",
+      "description": "No rental statistics broken down by business district × unit type (whole-unit 1BR/2BR, shared master/secondary bedroom); the current 8-area ranges are reference ranges from Anjuke (安居客) listing samples, not statistical; single-sample prices are leads only",
+      "product_implication": "The product must not present sample ranges as statistical conclusions; shared rentals show single-room figures only",
+      "severity": "P0"
+    },
+    {
+      "category": "Rent",
+      "description": "Missing shared master/secondary bedroom breakdown: no verifiable source (listing platforms, industry reports) distinguishes master vs. secondary bedrooms",
+      "product_implication": "Shared rentals show single-room price only, no master/secondary bedroom split",
+      "severity": "P0"
+    },
+    {
+      "category": "Rent",
+      "description": "Insufficient listing samples for Xinzhuang (莘庄), Qibao (七宝), Caohejing (漕河泾), Wujiaochang (五角场), Gucun (顾村), Jiuting/Sijing (九亭/泗泾), Jiading New Town (嘉定新城), Xujing East (徐泾东); not included in the official table",
+      "product_implication": "These areas may only be labeled \"pending verification\"; no match conclusions are output",
+      "severity": "P0"
+    },
+    {
+      "category": "Commute",
+      "description": "The 24 commute entries are official-network transfer estimates, not measured with Amap/Baidu; morning rush-hour crowding and flow control not factored in",
+      "product_implication": "Commute times shown as estimated ranges, with the estimation method labeled",
+      "severity": "P1"
+    },
+    {
+      "category": "Amenities",
+      "description": "All wet market / supermarket / mall POIs not verified item by item on maps",
+      "product_implication": "Amenity list labeled \"pending verification\"; business status not guaranteed",
+      "severity": "P0"
+    },
+    {
+      "category": "Electricity",
+      "description": "Missing a post-2024 State Grid Shanghai / DRC page directly restating residential tiered prices; current figures cited from the 2021 official document, with 2025 corroboration that they are still current",
+      "product_implication": "Electricity estimates labeled with rate source and timeliness",
+      "severity": "P1"
+    },
+    {
+      "category": "Gas",
+      "description": "Missing a post-2024 official page directly confirming residential piped-gas tiered prices",
+      "product_implication": "Gas estimates labeled with rate source and timeliness",
+      "severity": "P1"
+    },
+    {
+      "category": "Broadband",
+      "description": "Missing post-2024 official home broadband plans from China Mobile Shanghai and China Unicom Shanghai",
+      "product_implication": "Broadband shows only China Telecom's official standalone rate; no claimed three-carrier range",
+      "severity": "P1"
+    }
+  ]
+}

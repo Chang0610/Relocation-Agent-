@@ -1,0 +1,10 @@
+.env
+.env.*
+!.env.local.example
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+artifacts/
+data/answer_feedback.jsonl
+*.inspect.ndjson
