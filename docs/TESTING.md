@@ -2,7 +2,7 @@
 
 ## Deterministic regression checks
 
-Run the full Python regression suite from the repository root. It includes PRD-derived scenarios, unit tests, and a local HTTP integration suite. The HTTP suite binds a loopback port, so the environment running it must permit local sockets. These tests use deterministic model doubles and do not call OpenAI:
+Run the full Python regression suite from the repository root. It includes English scenario cases, unit tests, and a local HTTP integration suite. The HTTP suite binds a loopback port, so the environment running it must permit local sockets. These tests use deterministic model doubles and do not call OpenAI:
 
 ```bash
 python3 -m unittest discover -s tests -p 'test_*.py' -v
@@ -12,6 +12,8 @@ python3 -m py_compile backend/*.py tests/*.py
 ```
 
 The current Python suite has 138 passing tests: 130 deterministic tests (including 27 English PRD scenarios and QA-runner exit-code checks) and 8 local HTTP integration tests. The frontend English behavior and persistence checks are separate Node.js tests. The HTTP suite exercises validation, structured proposal response, profile round-trip, and the confirmed/pending calendar contract. It verifies HTTP/API integration, not live language-model behavior.
+
+The same deterministic checks run on pushes and pull requests through [GitHub Actions CI](../.github/workflows/ci.yml). CI uses Python 3.11 and Node.js 20, needs no secrets, and does not run model-backed tests.
 
 `tests/run_qa_regression.py` is a separate, model-backed scenario runner that calls an already-running API at `http://127.0.0.1:8766`; its multi-turn relocation cases require the configured model and may incur charges. It is not part of unittest discovery. Its process now exits nonzero if any case is a request error or an assertion review. `DEMO_MODE=1` is unbilled but intentionally supports only scripted demo flows, so it is not expected to pass the full agent scenario set. For visual/manual browser testing, use [WEB_ACCEPTANCE.md](WEB_ACCEPTANCE.md).
 

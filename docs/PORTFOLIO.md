@@ -1,64 +1,58 @@
-# Shanghai Relocation Agent — Portfolio Case Study
+# Engineering Case Study
 
-## Project summary
+## Project
 
-An English-first relocation-planning web app for people moving to Shanghai for work. The assistant organizes user-provided context into a source-aware plan and calendar proposal. The user reviews every proposed change; confirmed events are not modified until the user chooses to confirm.
+**Shanghai Relocation Agent — Full-Stack AI Web Application**
 
-This is a focused relocation agent, not a general-purpose agent builder. The portfolio build includes a deterministic demo mode that works without an API key and uses fictional data only.
+An English-language web prototype that combines a browser client, Python JSON API, local retrieval data, and an optional model adapter. The relocation use case provides realistic constraints; the engineering focus is request handling, evidence-aware response construction, safe state transitions, and testability.
 
-## Product and engineering work
+## What I built
 
-- Translated a relocation-planning problem into an English web experience with Assistant, Plan Calendar, and Profile surfaces.
-- Built a Python HTTP backend and browser client, with English retrieval data separated from the supplied source materials and original PRD.
-- Added structured response and calendar-operation validation, date/dependency handling, duplicate prevention, hard-deadline conflict protection, and a review-before-write workflow.
-- Added a deterministic showcase mode with a fictional profile/calendar, isolated browser storage, no model-provider calls, and no server-side feedback persistence.
-- Added regression coverage for the English PRD scenarios, API boundaries, calendar safety, retrieval evidence status, browser behavior, and persistence.
+- Implemented the browser application in semantic HTML, CSS, and vanilla JavaScript, including chat, profile, calendar, local persistence, and proposal review flows.
+- Built a Python standard-library HTTP API that validates request boundaries, extracts explicit profile updates, retrieves relevant English knowledge, invokes a model adapter, and returns structured responses.
+- Added calendar operation normalization and validation for duplicate events, dependency-aware date changes, hard-deadline conflicts, and explicit review-before-write behavior.
+- Implemented a deterministic demo mode that does not call a model, uses synthetic profile/calendar data, isolates its browser-storage namespace, and avoids server-side feedback persistence.
+- Added GitHub Actions CI for deterministic Python, HTTP integration, frontend regression, and syntax checks; CI does not require secrets or incur model charges.
 
-## Architecture and stack
+## Engineering decisions
 
-- **Frontend:** semantic HTML, CSS, and vanilla JavaScript; browser-local state for the current prototype.
-- **Backend:** Python standard-library HTTP server, English knowledge retrieval, request validation, model adapter, and calendar proposal pipeline.
-- **Data:** Curated English runtime knowledge, area data, and task templates. The source PRD and research files are intentionally not redistributed in this release copy.
-- **Safety:** proposed calendar changes remain pending until explicit confirmation; source uncertainty remains visible; the portfolio demo disables model calls and uses a separate storage namespace.
-- **Testing:** Python `unittest`, Node.js frontend regression scripts, and a separate opt-in model-backed scenario runner.
+### Proposal before persistence
 
-## Portfolio demo
+The API treats model-suggested calendar operations as untrusted proposals. Backend validation computes a change set, and the browser only updates confirmed calendar state after explicit user confirmation. This separates suggestion generation from a state-changing action and makes the operation reviewable.
 
-Run from this directory:
+### Stateless API prototype
 
-```bash
-DEMO_MODE=1 python3 backend/server.py
-```
+The browser sends the relevant profile, recent messages, and calendar state with each chat request; accepted state remains in browser storage. This keeps the prototype simple and avoids server-side storage of user profiles, but it does not provide accounts, cross-device sync, or multi-user data isolation.
 
-Open `http://127.0.0.1:8765/`. No API key is needed. Use only the fictional sample profile. Demo answers and dates are scripted examples, not live policy guidance or an evaluation of model quality. See [Demo Guide](DEMO_GUIDE.md) and [Testing Guide](TESTING.md).
+### Deterministic testing boundary
+
+Core tests use deterministic model doubles and local HTTP integration. Model-backed scenarios are opt-in, so routine regression is repeatable and does not require an API key or incur usage charges.
+
+## Stack
+
+- **Languages:** Python, JavaScript, HTML, CSS
+- **Backend:** Python standard library HTTP server, JSON API, model adapter
+- **Frontend:** vanilla JavaScript, browser local storage
+- **Data:** curated English JSON retrieval dataset with source and evidence-status metadata
+- **Tests / CI:** Python `unittest`, Node.js regression scripts, GitHub Actions
 
 ## Verification
 
-At the latest recorded regression run, 130 deterministic Python tests and 8 local HTTP integration tests passed. The English frontend and persistence checks also passed. A narrow 390 × 844 local browser pass covered navigation, profile layout, plan proposal, and proposal dismissal; a wider viewport was used to capture the portfolio screens. The full accessibility, offline-recovery, and desktop acceptance checklist is still open. The model-backed ten-scenario runner is opt-in and may incur API charges; it was not part of the latest deterministic run.
+The latest local deterministic run passed 138 Python tests, including local HTTP integration tests, and both Node.js frontend checks. CI runs these tests plus Python syntax compilation. It does not run the optional model-backed QA suite. The project is a local/demo prototype: desktop accessibility, full browser compatibility, and offline/error recovery acceptance are still open.
 
-## Screenshots
+## Resume bullets
 
-All images below use fictional demo data and were captured from the local demo build. They are supporting portfolio material, not evidence of a public deployment.
+**Shanghai Relocation Agent | Full-Stack AI Web Application**
 
-![English Assistant home](screenshots/01-assistant-home.png)
+- Built a full-stack web app with a vanilla JavaScript client and Python JSON API, integrating profile state, English knowledge retrieval, model-backed responses, and calendar planning.
+- Implemented a validated proposal workflow with dependency-aware date updates, duplicate prevention, hard-deadline safeguards, and explicit user confirmation before calendar state is persisted.
+- Added a deterministic no-key demo mode and GitHub Actions CI; wrote 138 Python regression tests and Node.js frontend checks without requiring live model calls.
 
-![English plan calendar](screenshots/03-plan-calendar.png)
+Describe this as a **full-stack prototype**, not a deployed or production-ready service. The source PRD and original Chinese edition are outside this curated release repository.
 
-![English profile](screenshots/04-profile.png)
+## Further work
 
-## Resume-ready description
-
-**Shanghai Relocation Agent | Full-stack AI product prototype**
-
-- Built an English-first relocation-planning web app with a Python API, browser client, and evidence-aware retrieval over Shanghai relocation materials.
-- Designed a structured calendar proposal workflow with dependency-aware date changes, duplicate prevention, hard-deadline conflict handling, and explicit user confirmation before writes.
-- Implemented a no-key portfolio demo mode with fictional seed data, isolated browser storage, deterministic responses, and no model calls; added 138 Python regression tests plus browser-state checks.
-
-These bullets describe the local prototype and tested behavior. Do not describe it as publicly deployed, production-ready, or as a general-purpose agent platform until those milestones are completed.
-
-## Remaining showcase gates
-
-- Complete the desktop and accessibility portions of [Web Acceptance](WEB_ACCEPTANCE.md).
-- Decide whether to run the model-backed scenarios after reviewing current API pricing and confirming the configured key/model.
-- Connect and publish through a Git provider and hosting account only after the owner resumes the previously deferred GitHub step and reviews provider privacy/logging terms.
-- Do not use real user profiles or invite public visitors until hosting and privacy behavior have been reviewed.
+- Complete accessibility, desktop, browser-compatibility, and offline/recovery acceptance.
+- Add authentication, authorization, server-side persistence, and tenant isolation before supporting real users.
+- Define privacy-safe observability, retention/deletion, rate/spend limits, deployment, and rollback processes before production deployment.
+- Review the redistribution terms and attribution requirements for runtime knowledge and source records.

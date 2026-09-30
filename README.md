@@ -1,44 +1,76 @@
-# Shanghai Relocation Agent — Web Edition
+# Shanghai Relocation Agent
 
-An English-first web agent that helps people relocating to Shanghai for work organize a move into a safe, source-aware plan. It turns user context into ordered tasks, dates, prerequisites, completion criteria, evidence, official entry points, and a calendar proposal. The user remains in control: the agent does not submit applications, book appointments, pay fees, or guarantee outcomes, and calendar changes are saved only after confirmation.
+**Full-stack AI web application prototype** built with Python and vanilla JavaScript. The project demonstrates a browser-to-API workflow for retrieval-grounded assistance and safe, user-confirmed calendar updates.
 
-This is a focused relocation assistant, not a generic platform for creating arbitrary agents. The current browser app is a local prototype, not a cloud-hosted production service.
+[![CI](https://github.com/Chang0610/Relocation-Agent-/actions/workflows/ci.yml/badge.svg)](https://github.com/Chang0610/Relocation-Agent-/actions/workflows/ci.yml)
 
-## Product scope and source precedence
+> This repository is a local/demo prototype, not a production service. It has no authentication, server-side user database, or multi-user isolation. Do not use real personal data.
 
-- The English web app is the active product direction. See [Product Direction](docs/PRODUCT_DIRECTION.md).
-- The supplied source PRD/research package and the Chinese project remain in the owner's development workspace; they are intentionally not included in this curated public-release copy.
-- This copy includes only the English web app, runtime English data, tests, demo documentation, and portfolio screenshots. The runtime data keeps its evidence-status labels.
+## Engineering highlights
 
-## Project layout
+- **End-to-end request flow:** browser client → bounded JSON API → profile extraction and English knowledge retrieval → structured model response → validated calendar proposal → explicit user confirmation → browser persistence.
+- **Safe state transitions:** calendar operations are normalized and checked for duplicates, dependencies, date ordering, and hard-deadline conflicts. The API returns a proposal; confirmed state changes only after the user confirms it in the browser.
+- **Evidence-aware retrieval:** runtime JSON records retain source URLs and evidence status. Retrieval distinguishes verified facts from items that still require confirmation; the assistant is instructed not to upgrade uncertain source data into definitive claims.
+- **Deterministic demo mode:** run the complete UI without an API key or model request, with fictional seed data and a separate browser-storage namespace.
+- **Automated regression checks:** Python unit and HTTP integration tests plus Node.js tests for frontend parsing, proposal order, and persistence failure behavior. GitHub Actions runs these checks without billable API calls.
 
-- `preview/` — browser app prototype (chat, plan calendar, profile)
-- `backend/` — local HTTP API, model adapter, English retrieval, and calendar proposal validation
-- `data/` — runtime English knowledge, area data, and task templates
-- `tests/` — deterministic API, scenario, and browser-state regression tests
-- `docs/` — product direction, architecture, API, testing, web acceptance, and release guidance
+## Stack
+
+| Layer | Implementation |
+| --- | --- |
+| Browser | Semantic HTML, CSS, vanilla JavaScript, browser local storage |
+| API | Python 3 standard library HTTP server; JSON request/response contract |
+| AI / retrieval | OpenAI-compatible model adapter; local English JSON knowledge retrieval |
+| Validation | Python `unittest`, local HTTP integration tests, Node.js regression scripts |
+| CI | GitHub Actions; Python 3.11 and Node.js 20 |
+
+## Architecture
+
+```mermaid
+sequenceDiagram
+    participant UI as Browser app
+    participant API as Python API
+    participant RET as English retrieval
+    participant LLM as Model adapter
+    UI->>API: POST /api/chat (messages, profile, calendar)
+    API->>API: Validate request and extract explicit profile facts
+    API->>RET: Retrieve relevant knowledge and evidence
+    RET-->>API: Context with source/status metadata
+    API->>LLM: Request structured response
+    LLM-->>API: Answer and proposed calendar operations
+    API->>API: Normalize operations and compute proposal diff
+    API-->>UI: Response + pending proposal (no confirmed write)
+    UI->>UI: User reviews and confirms
+    UI->>UI: Persist accepted state in browser storage
+```
+
+More detail: [Architecture](docs/ARCHITECTURE.md) · [API contract](docs/API.md) · [Testing](docs/TESTING.md).
 
 ## Run locally
 
-For the portfolio demo, start the deterministic, no-model mode; it needs no API key:
+Requirements: Python 3.11+ and Node.js 20+ for the full test suite. The backend uses only the Python standard library.
+
+Start the deterministic demo (no key, no model calls):
 
 ```bash
 DEMO_MODE=1 python3 backend/server.py
 ```
 
-Open `http://127.0.0.1:8765/`. The demo seeds a fictional profile and sample calendar in a demo-only browser-storage namespace. It does not read or overwrite normal app storage, call a language model, persist chat/profile/feedback on the application server, or send feedback. Requests are processed transiently; use fictional information only. **Reset demo** clears only this app's demo browser state.
+Open <http://127.0.0.1:8765/>. The demo uses fictional data, isolated browser storage, and does not persist feedback on the server.
 
-For local model-backed development, create `.env.local` from the example and add a server-side API key. Do not commit the key or place it in browser code.
+For model-backed local development, create `.env.local` from the example and add a server-side key:
 
 ```bash
 cp .env.local.example .env.local
-# Set OPENAI_API_KEY in .env.local
+# Set OPENAI_API_KEY in .env.local; never put it in browser code or commit it.
 python3 backend/server.py
 ```
 
-Open `http://127.0.0.1:8765/`. Without an API key, deterministic tests still run, but live chat is unavailable. The backend currently binds to localhost and is not ready for public deployment.
+The default API binds to localhost. It is not ready for public deployment.
 
-## Regression checks
+## Verify
+
+Run the same deterministic checks used by CI:
 
 ```bash
 python3 -m unittest discover -s tests -p 'test_*.py' -v
@@ -47,24 +79,25 @@ node tests/test_frontend_persistence.cjs
 python3 -m py_compile backend/*.py tests/*.py
 ```
 
-Run the commands from this repository root. The HTTP integration suite binds a temporary loopback port; the test environment must permit local socket binding. The Python tests are deterministic and do not call a model. `tests/run_qa_regression.py` is a separate model-backed scenario suite and may incur charges.
+The latest local run passed 138 Python tests and both frontend checks. The optional model-backed QA/live smoke scripts can incur API charges and are not run in CI.
 
-See [Testing Guide](docs/TESTING.md) for coverage details. The opt-in live API smoke test makes one billable model request; do not run it as a repeated test loop.
+## Repository map
 
-## Evidence and safety
+```text
+backend/     HTTP API, retrieval, model adapter, profile and calendar logic
+data/        English runtime knowledge, area data, task templates
+preview/     Browser UI, English strings, styles and client state
+tests/       Unit, HTTP integration, scenario and frontend regression tests
+docs/        Architecture, API, test strategy, demo and release notes
+```
 
-Policy, price, commute, and location claims retain their source status. Rental figures are listing samples rather than live quotes; commute figures are network estimates rather than measured trips; facilities require map verification. Sensitive identity and payment information should not be stored in the profile. Proposed schedule changes remain drafts until the user confirms them.
+The English runtime data is included; the source PRD/research documents and original Chinese project are intentionally not included. See [Publishing notes](PUBLISHING.md) for language scope and attribution review.
 
-## Project documentation
+## Known engineering gaps
 
-- [Product Direction](docs/PRODUCT_DIRECTION.md)
-- [Architecture and production gaps](docs/ARCHITECTURE.md)
-- [Deployment decisions (proposal; no cloud resources created)](docs/DEPLOYMENT_DECISIONS.md)
-- [API reference](docs/API.md)
-- [Testing guide](docs/TESTING.md)
-- [Web acceptance checklist](docs/WEB_ACCEPTANCE.md)
-- [Portfolio demo guide](docs/DEMO_GUIDE.md)
-- [Portfolio case study and resume-ready bullets](docs/PORTFOLIO.md)
-- Portfolio screenshots: [`screenshots/`](docs/screenshots/)
-- [Render Blueprint](render.yaml) (configuration only; no service has been created)
-- [Release checklist](docs/RELEASE_CHECKLIST.md)
+- No authentication, authorization, server-side persistence, or cross-device sync.
+- No production rate/spend limits, privacy-safe observability, deployment pipeline, or operational recovery process.
+- Desktop accessibility, browser compatibility, and full offline/error-recovery acceptance remain open.
+- Knowledge source attribution and third-party redistribution terms should be reviewed before reuse.
+
+This is best described as a **full-stack AI prototype**, not a deployed or production-ready system. See [Portfolio case study](docs/PORTFOLIO.md) and [Release checklist](docs/RELEASE_CHECKLIST.md).
