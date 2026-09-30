@@ -79,7 +79,7 @@ node tests/test_frontend_persistence.cjs
 python3 -m py_compile backend/*.py tests/*.py
 ```
 
-The latest local run passed 138 Python tests and both frontend checks. The optional model-backed QA/live smoke scripts can incur API charges and are not run in CI.
+The latest local run passed **138 Python `unittest` methods across 13 test files**: 130 non-HTTP methods and 8 local HTTP integration methods. The frontend suite consists of **2 Node.js script-level regression scenarios** (13 assertion statements total; assertions are not counted as independent test cases). Some Python methods contain multiple assertions or input variants, so these counts describe executed test methods/scripts—not unique code paths. The optional model-backed QA/live smoke scripts can incur API charges and are not run in CI.
 
 ## Repository map
 

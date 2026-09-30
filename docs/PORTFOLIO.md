@@ -38,7 +38,7 @@ Core tests use deterministic model doubles and local HTTP integration. Model-bac
 
 ## Verification
 
-The latest local deterministic run passed 138 Python tests, including local HTTP integration tests, and both Node.js frontend checks. CI runs these tests plus Python syntax compilation. It does not run the optional model-backed QA suite. The project is a local/demo prototype: desktop accessibility, full browser compatibility, and offline/error recovery acceptance are still open.
+The latest local deterministic run passed 138 Python `unittest` methods across 13 files (130 non-HTTP methods and 8 local HTTP integration methods) and 2 Node.js script-level regression scenarios. The Node scripts contain 13 assertion statements; they are not reported as 13 independent tests. CI runs these checks plus Python syntax compilation. It does not run the optional model-backed QA suite. The project is a local/demo prototype: desktop accessibility, full browser compatibility, and offline/error recovery acceptance are still open.
 
 ## Resume bullets
 
@@ -46,7 +46,7 @@ The latest local deterministic run passed 138 Python tests, including local HTTP
 
 - Built a full-stack web app with a vanilla JavaScript client and Python JSON API, integrating profile state, English knowledge retrieval, model-backed responses, and calendar planning.
 - Implemented a validated proposal workflow with dependency-aware date updates, duplicate prevention, hard-deadline safeguards, and explicit user confirmation before calendar state is persisted.
-- Added a deterministic no-key demo mode and GitHub Actions CI; wrote 138 Python regression tests and Node.js frontend checks without requiring live model calls.
+- Added a deterministic no-key demo mode and GitHub Actions CI; wrote 138 Python `unittest` methods and 2 Node.js regression scenarios, all runnable without live model calls.
 
 Describe this as a **full-stack prototype**, not a deployed or production-ready service. The source PRD and original Chinese edition are outside this curated release repository.
 

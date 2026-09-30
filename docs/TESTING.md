@@ -11,7 +11,7 @@ node tests/test_frontend_persistence.cjs
 python3 -m py_compile backend/*.py tests/*.py
 ```
 
-The current Python suite has 138 passing tests: 130 deterministic tests (including 27 English PRD scenarios and QA-runner exit-code checks) and 8 local HTTP integration tests. The frontend English behavior and persistence checks are separate Node.js tests. The HTTP suite exercises validation, structured proposal response, profile round-trip, and the confirmed/pending calendar contract. It verifies HTTP/API integration, not live language-model behavior.
+The current Python suite has **138 passing `unittest` methods across 13 test files**: 130 non-HTTP methods (including 27 English scenario methods and QA-runner exit-code checks) and 8 local HTTP integration methods. A method may contain multiple assertions or input variants; the count is test methods, not assertions or unique logic paths. The frontend suite has **2 Node.js script-level regression scenarios**: English follow-up/proposal ordering and calendar persistence rollback. Together those scripts contain 13 assertion statements, which are not counted as 13 independent test cases. The HTTP suite exercises validation, structured proposal response, profile round-trip, and the confirmed/pending calendar contract. It verifies HTTP/API integration, not live language-model behavior.
 
 The same deterministic checks run on pushes and pull requests through [GitHub Actions CI](../.github/workflows/ci.yml). CI uses Python 3.11 and Node.js 20, needs no secrets, and does not run model-backed tests.
 
